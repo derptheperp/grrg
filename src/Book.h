@@ -21,25 +21,25 @@ public:
     Book(string title, string author, int format, int pubYear, int numOfPages);
 
     //getters and setters
-    string getTitle() const;
-    void setTitle(const string title);
+    string getTitle();
+    void setTitle(string title);
 
-    string getAuthor() const;
-    void setAuthor(const string author);
+    string getAuthor();
+    void setAuthor(string author);
 
-    string getFormat() const;
-    void setFormat(const int userInput);
+    string getFormat();
+    void setFormat(int userInput);
 
-    int getPubYear() const;
-    void setPubYear(const int pubYear);
+    int getPubYear();
+    void setPubYear(int pubYear);
 
-    int getNumOfPages() const;
-    void setNumOfPages(const int numOfPages);
+    int getNumOfPages();
+    void setNumOfPages(int numOfPages);
 
     //functions
-    void displayBook() const;
-    float estimatedBookWeight() const;
-    float estimatedReadingTime() const;
+    void displayBook();
+    float estimatedBookWeight();
+    float estimatedReadingTime();
 
 };
 

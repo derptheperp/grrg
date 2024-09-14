@@ -1,4 +1,4 @@
-#include "Book.h"
+include "Book.h"
 
 #include <string>
 #include <iostream>
@@ -7,13 +7,27 @@ using namespace std;
 
 //constructors
 
-Book::Book(){}
-Book::Book(const string title, const string author){
+Book::Book(){
+
+    title = "";
+    author = "";
+    format = "";
+    pubYear = 0;
+    numOfPages = 0;
+
+}
+
+Book::Book(string title, string author){
 
     this->title = title;
     this->author = author;
+    format = "";
+    pubYear = 0;
+    numOfPages = 0;
+
 }
-Book::Book(const string title, const string author, const int format, int pubYear, int numOfPages){
+
+Book::Book(string title,  string author,  int format, int pubYear, int numOfPages){
 
     this->title = title;
     this->author = author;
@@ -26,45 +40,45 @@ Book::Book(const string title, const string author, const int format, int pubYea
 
 //setters and getters
 
-string Book::getTitle() const{
+string Book::getTitle(){
 
     return title;
 
 }
 
-string Book::getAuthor() const{
+string Book::getAuthor() {
 
     return author;
 
 }
 
-string Book::getFormat() const{
+string Book::getFormat() {
 
     return format;
 
 }
 
-int Book::getPubYear() const{
+int Book::getPubYear() {
 
     return pubYear;
 
 }
 
-int Book::getNumOfPages() const{
+int Book::getNumOfPages() {
 
     return numOfPages;
 
 }
 
-void Book::setTitle(const string title){
+void Book::setTitle( string title){
     this->title = title;
 }
 
-void Book::setAuthor(const string author){
+void Book::setAuthor( string author){
     this->author = author;
 }
 
-void Book::setFormat(const int userInput){
+void Book::setFormat( int userInput){
 
     // switch function, based on user input, it will changed the format
     // based on the int the user inputs
@@ -92,17 +106,17 @@ void Book::setFormat(const int userInput){
     }
 }
 
-void Book::setPubYear(const int pubYear){
+void Book::setPubYear( int pubYear){
     this->pubYear = pubYear;
 }
-void Book::setNumOfPages(const int numOfPages){
+void Book::setNumOfPages( int numOfPages){
     this->numOfPages = numOfPages;
 }
 
 
 
 //functions
-void Book::displayBook() const{
+void Book::displayBook() {
 
     cout << "Title: " << getTitle() << endl;
     cout << "Author: " << getAuthor() << endl;
@@ -112,17 +126,18 @@ void Book::displayBook() const{
 
 }
 
-float Book::estimatedBookWeight() const{
+float Book::estimatedBookWeight() {
 
     float bookWeight;
+    int pages = (static_cast<float>(numOfPages/2.0) + .5);
 
     if(format == "Hardcover"){
 
-        bookWeight = (0.176 * getNumOfPages()) + 2.1;
+        bookWeight = (0.176 * pages) + 2.1;
 
     }else if(format == "Paperback"){
 
-        bookWeight = (0.176 * getNumOfPages()) + 0.4;
+        bookWeight = (0.176 * pages) + 0.4;
 
     }else{
 
@@ -136,8 +151,18 @@ float Book::estimatedBookWeight() const{
 
 
 
-float estimatedReadingTime(){
+float Book::estimatedReadingTime() {
 
-return 0;
+    int userReadingSpeed;
+
+    float pages = numOfPages;
+
+    cout << "Enter your reading speed / narrator's reading speed per min: ";
+
+    cin >> userReadingSpeed;
+
+    cout << "The book will take you about " << numOfPages / userReadingSpeed << " min" << endl;
+
+    return numOfPages / userReadingSpeed;
 
 }
